@@ -1,5 +1,6 @@
+const host = process.env.APP_URL;
 export const getStaticPaths = async () => {
-    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+    const response = await fetch(`${host}/api/users`);
     const data = await response.json();
 
     const paths = data.map(person => {
@@ -16,7 +17,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (ctx) => {
     const id = ctx.params.id;
-    const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+    const response = await fetch(`${host}/api/users/${id}`);
     const data = await response.json();
 
     return {

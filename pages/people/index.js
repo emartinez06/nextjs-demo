@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import styles from '../../styles/People.module.css';
+const host = process.env.APP_URL;
 export const getStaticProps = async () => {
-    const response = await fetch('https://jsonplaceholder.typicode.com/users');
+    const response = await fetch(`${host}/api/users`);
     const data = await response.json();
     return {
         props: {
